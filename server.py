@@ -4,12 +4,11 @@ import json
 import math
 
 HOST = "127.0.0.1" # localhost
-PORT = 2222 # > 1023
+PORT = 1234 # > 1023
 
-def atenderCliente(cliente, endereco):
+def calculate(cliente, endereco):
     print(f"Conectado em {endereco}")
     while True:
-        
         
         menu = "Bem vindo a calculadora! Envie seu comando"
         cliente.sendall(menu.encode())
@@ -55,7 +54,7 @@ s.listen(5)
 print("Aguardando conexões")
 while True:
     cliente, endereco = s.accept()
-    cliente.settimeout(60)
-    threading.Thread(target=atenderCliente, args=(cliente, endereco)).start()
+    cliente.settimeout(120)
+    threading.Thread(target=calculate, args=(cliente, endereco)).start()
 
 

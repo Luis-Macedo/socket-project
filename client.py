@@ -3,15 +3,15 @@ import socket
 import json
 
 HOST = "127.0.0.1"
-PORT = 2222
+PORT = 1234
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.connect((HOST, PORT))
 
 while True:
     dados = s.recv(1024)
-    dadosString = dados.decode("utf-8")
-    print(dadosString)
+    message = dados.decode("utf-8")
+    print(message)
     print("Comandos disponíveis: [1: Raiz], [2: Potência], [3:Seno], [4: Cosseno], [5: Tangente], [6: Fatorial], [SAIR]")
     comando = str(input("Digite o comando a enviar: "))
     while not comando.startswith(('1','2','3','4','5','6', "SAIR")):
